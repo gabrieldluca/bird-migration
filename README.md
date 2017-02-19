@@ -1,3 +1,4 @@
+![img](http://i.imgur.com/H7yOKLM.png)
 # Bird Migration
 As according to the Wikipedia, the *Global Positioning System* (GPS) is a global navigation satellite system that provides geolocation and time information to a GPS receiver in all weather conditions, anywhere on or near the Earth where there is an unobstructed line of sight to four or more GPS satellites. One fascinating area of research uses GPS to track movements of animals. This case study visualizes, examines and manipulates GPS data that is used to track flight patterns of birds.
 
