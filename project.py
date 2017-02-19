@@ -37,8 +37,7 @@ plt.savefig("eric_speed.pdf")
 #generating timeplot file
 timestamps = []
 for k in range(len(birddata)):
-    timestamps.append(datetime.datetime.strptime\
-    (birddata.date_time.iloc[k][:-3], "%Y-%m-%d %H:%M:%S"))
+    timestamps.append(datetime.datetime.strptime(birddata.date_time.iloc[k][:-3], "%Y-%m-%d %H:%M:%S"))
     
 birddata["timestamp"] = pd.Series(timestamps, index=birddata.index)
 
