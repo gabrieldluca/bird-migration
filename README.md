@@ -6,7 +6,7 @@ The data for this project comes from the [LifeWatch research infrastructure](htt
 
 Some other files contained in this project are:
 - `patterns.pdf`, a plot that displays the periods which each of the birds fly substantially more. These are the periods that correspond to their migration patterns.
-- `trajectories.pdf`, a figure that showcases the trajectory path of bird in the cartesian plane.
+- `trajectories.pdf`, a figure that showcases the trajectory path of each bird in the cartesian plane.
 - `map.pdf`, an actual map made with the *Cartopy* library to represent the trajectory of all the three birds using GPS data. It looks like birds prefer to fly near the coast during the migration period.
 - And an extra assortment of Eric's files for a singular overview.
 
