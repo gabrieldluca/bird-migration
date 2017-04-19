@@ -8,7 +8,7 @@ import datetime
 birddata = pd.read_csv("bird_tracking.csv")
 bird_names = pd.unique(birddata.bird_name)    
 
-#generating trajectory file
+#Generates trajectory graph
 plt.figure(figsize=(7,7))
 for bird in bird_names:
     ix = birddata.bird_name==bird
@@ -20,7 +20,7 @@ plt.ylabel("Latitude")
 plt.legend(loc="lower right")
 plt.savefig("trajectories.pdf")
 
-#generating eric's speed file
+#Generates Eric's speed graph
 ix = birddata.bird_name=='Eric'
 speed = birddata.speed_2d[ix]
 ind = np.isnan(speed)
@@ -34,7 +34,7 @@ plt.xlabel("2D speed (m/s)")
 plt.ylabel("Frequency")
 plt.savefig("eric_speed.pdf")
 
-#generating timeplot file
+#Generates timeplot graph
 timestamps = []
 for k in range(len(birddata)):
     timestamps.append(datetime.datetime.strptime(birddata.date_time.iloc[k][:-3], "%Y-%m-%d %H:%M:%S"))
@@ -51,15 +51,14 @@ plt.xlabel("Observations")
 plt.ylabel("Elapsed time (days)")
 plt.savefig("eric_timeplot.pdf")
 
-#generating eric migration pattern file
+#Generates Eric's migration pattern file
 next_day = 1
 inds = []
 speeds = []
 for (i, t) in enumerate(elapsed_days):
     if t < next_day:
         inds.append(i)
-    else:
-        #compute mean speed
+    else: #compute mean speed
         speeds.append(np.mean(data.speed_2d[inds]))
         next_day += 1
         inds = []
@@ -70,7 +69,7 @@ plt.xlabel("Day")
 plt.ylabel("Mean speed (m/s)")
 plt.savefig("eric_pattern.pdf")
 
-#generating map file
+#Generates the map file
 proj = ccrs.Mercator()
 
 plt.figure(figsize=(10,10))
@@ -89,7 +88,7 @@ for name in bird_names:
 plt.legend(loc="upper left")
 plt.savefig("map.pdf")
 
-#generating all patterns file
+#Generates pattern file for all birds
 birddata.date_time = pd.to_datetime(birddata.date_time)
 birddata["date"] = birddata.date_time.dt.date
 
