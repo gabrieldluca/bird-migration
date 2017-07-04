@@ -34,7 +34,7 @@ plt.xlabel("2D speed (m/s)")
 plt.ylabel("Frequency")
 plt.savefig("eric_speed.pdf")
 
-# PART 3 - ERIC'S TIMEPLOT
+# PART 3 - ERIC'S TIMEPLOT 
 timestamps = []
 for k in range(len(birddata)):
     timestamps.append(datetime.datetime.strptime(birddata.date_time.iloc[k][:-3], "%Y-%m-%d %H:%M:%S"))
