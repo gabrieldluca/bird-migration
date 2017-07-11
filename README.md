@@ -9,5 +9,7 @@ Some other files contained in this project are:
 - `trajectories.pdf`, a figure that showcases the trajectory path of each bird in the cartesian plane.
 - `map.pdf`, an actual map made with the *Cartopy* library to represent the trajectory of all the three birds using GPS data. It looks like birds prefer to fly near the coast during the migration period.
 - And an extra assortment of Eric's files for a singular overview.
-
+ 
+More info about the *Cartopy* library can be found [here](https://anaconda.org/SciTools/cartopy).
+ 
 **Special acknowledgment:** Jukka-Pekka "JP" Onnela and the whole HarvardX's team, for developing this case study for the Using Python for Research course.
