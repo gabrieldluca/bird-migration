@@ -5,6 +5,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 
+plt.style.use("ggplot")
+colors = ["#3585BC", "#FF7E0E", "#2B9F2B"]
+
 data = pd.read_csv("bird_tracking.csv")
 names = pd.unique(data.bird_name)    
 eric = (data.bird_name=="Eric")
@@ -12,10 +15,10 @@ eric = (data.bird_name=="Eric")
 # PART 1 - TRAJECTORY
 
 plt.figure(figsize=(7,7))
-for bird in names:
+for bird, c in zip(names, colors):
     ind = (data.bird_name==bird)
     x, y = data.longitude[ind], data.latitude[ind]
-    plt.plot(x, y, ".", label=bird)
+    plt.plot(x, y, ".", label=bird, color=c)
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
@@ -28,7 +31,7 @@ plt.figure(figsize=(8,4))
 speed = data.speed_2d[eric]
 ind = np.isnan(speed)
 
-plt.hist(speed[~ind], bins=np.linspace(0, 30, 20), normed=True)
+plt.hist(speed[~ind], bins=np.linspace(0, 30, 20), normed=True, color=colors[0])
 plt.xlabel("2D speed (m/s)")
 plt.ylabel("Frequency")
 plt.savefig("eric-speed.pdf")
@@ -46,7 +49,7 @@ times = data[eric].timestamp
 elapsed_time = [time-times[0] for time in times]
 elapsed_days = np.array(elapsed_time) / timedelta(days=1)
 
-plt.plot(elapsed_days)
+plt.plot(elapsed_days, color=colors[0])
 plt.xlabel("Observations")
 plt.ylabel("Elapsed time (days)")
 plt.savefig("eric-timeplot.pdf")
@@ -67,7 +70,7 @@ for i, t in enumerate(elapsed_days):
         next_day += 1; inds = []
 
 plt.figure(figsize=(8,6))
-plt.plot(speeds)
+plt.plot(speeds, color=colors[0])
 plt.xlabel("Day")
 plt.ylabel("Mean speed (m/s)")
 plt.savefig("eric-pattern.pdf")
@@ -82,10 +85,10 @@ ax.add_feature(cfeature.OCEAN)
 ax.add_feature(cfeature.COASTLINE)
 ax.add_feature(cfeature.BORDERS, linestyle=":")
 
-for name in names:
+for name, c in zip(names, colors):
     ind = (data["bird_name"] == name)
     x, y = data.longitude[ind], data.latitude[ind]
-    ax.plot(x, y, ".", transform=ccrs.Geodetic(), label=name)
+    ax.plot(x, y, ".", transform=ccrs.Geodetic(), label=name, color=c)
 
 plt.legend(loc="upper left")
 plt.savefig("map.pdf")
@@ -97,10 +100,11 @@ data["date"] = datetimes.dt.date
 birds = data.groupby("bird_name")
 
 plt.figure()
-for name in names:
+plt.title("Migration patterns")
+for name, c in zip(names, colors):
     bird = birds.get_group(name).groupby("date")
     speed = bird.speed_2d.mean()
-    speed.plot(label=name)
+    speed.plot(label=name, color=c)
 
 plt.legend(loc="upper left")
 plt.savefig("patterns.pdf")
