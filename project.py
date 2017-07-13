@@ -22,7 +22,7 @@ for bird, c in zip(names, colors):
 
 plt.xlabel("Longitude")
 plt.ylabel("Latitude")
-plt.legend(loc="lower right")
+plt.legend(loc="upper left")
 plt.savefig("trajectories.pdf")
 
 # PART 2 - ERIC'S SPEED
