@@ -12,4 +12,4 @@ Some other files contained in this project are:
  
 More info about the *Cartopy* library can be found [here](https://anaconda.org/SciTools/cartopy).
  
-**Special acknowledgment:** Jukka-Pekka "JP" Onnela and the whole HarvardX's team, for developing this case study for the Using Python for Research course.
+**Special acknowledgment:** Jukka-Pekka "JP" Onnela and the whole HarvardX's team, for developing this case study for the [(PH526x) Using Python for Research course](https://www.datacamp.com/statement-of-accomplishment/course/517a52d539fd14d92ee3007d48e5a38fc011c523).
